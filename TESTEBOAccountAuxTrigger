@@ -1,0 +1,21 @@
+@isTest
+public class TESTEBOAccountAuxTrigger {
+    
+        @isTest
+        public static void Cenario1(){
+                account novo = new account (Name = 'opa',CNPJ__c='77777777777777');
+                test.startTest();
+                insert novo;
+                test.stopTest();
+                string resultado = BOAccountAuxTrigger.buscaContasCNPJ('77777777777777');
+            system.assert(resultado!=null,'A função não está rodando direito');
+           
+        } 
+    	@isTest
+        public static void Cenario2(){
+              
+              string resultado = BOAccountAuxTrigger.buscaContasCNPJ('11111111111112');
+            system.assert(resultado==null,'A função não está rodando direito');
+            
+        }
+}
